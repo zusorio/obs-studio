@@ -246,6 +246,9 @@ static bool create_audio_stream(struct ffmpeg_output *stream, struct ffmpeg_data
 
 	data->audio_infos[idx].stream = avstream;
 	data->audio_infos[idx].ctx = context;
+	
+	av_dict_set(&avstream->metadata, "title", "Test Name", 0);
+
 	avcodec_parameters_from_context(data->audio_infos[idx].stream->codecpar, context);
 	return true;
 }
